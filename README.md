@@ -1,5 +1,4 @@
 # Ooodle-Game
-# Juego de Ecuaciones Matemáticas
 
 ## 1. Introducción
 
