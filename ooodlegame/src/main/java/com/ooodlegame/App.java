@@ -1,34 +1,35 @@
 package com.ooodlegame;
 
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
-import java.io.IOException;
-
-/**
- * JavaFX App
- */
 public class App extends Application {
 
-    private static Scene scene;
-
     @Override
-    public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("primary"), 640, 480);
+    public void start(Stage stage) {
+
+        Font nunito = Font.loadFont(
+            "https://fonts.gstatic.com/s/nunito/v8/ySZTeT3IuzJj0GK6uGpbBg.ttf",
+            20
+        );
+
+        Label texto = new Label("Fuente Nunito en JavaFX");
+        Button button = new Button(" Test Button");
+        VBox box = new VBox(15, texto, button);
+        box.setAlignment(Pos.CENTER);
+        texto.setFont(nunito);
+        button.setFont(nunito);
+        Scene scene = new Scene(box, 400, 200);
+
         stage.setScene(scene);
+        stage.setTitle("Nunito Font");
         stage.show();
-    }
-
-    static void setRoot(String fxml) throws IOException {
-        scene.setRoot(loadFXML(fxml));
-    }
-
-    private static Parent loadFXML(String fxml) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
-        return fxmlLoader.load();
     }
 
     public static void main(String[] args) {
