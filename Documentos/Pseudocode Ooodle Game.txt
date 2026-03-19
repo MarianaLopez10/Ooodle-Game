@@ -1,0 +1,199 @@
+OOODLE GAME
+
+// VARIABLES GLOBALES
+
+rango            = 0
+intentos         = 0
+maxIntentos      = 6
+numerosUsados    = []
+ecuacionSecreta  = []
+resultadoSecreto = 0
+
+
+// FUNCIÓN: inicializarJuego
+
+FUNCIÓN inicializarJuego()
+
+    MOSTRAR opciones de rango al usuario
+    LEER rango  // 9 o 12
+    intentos         = 0
+    maxIntentos      = 6
+    numerosUsados    = []
+    ecuacionSecreta  = generarEcuacionAleatoria(rango)
+    resultadoSecreto = calcularResultado(ecuacionSecreta)
+
+FIN FUNCIÓN
+
+
+// FUNCIÓN: generarEcuacionAleatoria
+
+FUNCIÓN generarEcuacionAleatoria(rango)
+
+    disponibles = [1, 2, 3, ..., rango]
+    mezclar(disponibles)                    // orden aleatorio
+
+    num1 = disponibles[1]
+    num2 = disponibles[2]
+    num3 = disponibles[3]
+    num4 = disponibles[4]
+
+    ecuacion = [num1, num2, num3, num4]
+
+    RETORNAR ecuacion
+
+FIN FUNCIÓN
+
+
+// FUNCIÓN: calcularResultado
+
+FUNCIÓN calcularResultado(ecuacion)
+
+    // Operación fija respetando orden de operaciones -> num1 * num2 + num3 - num4
+    resultado = (ecuacion[1] × ecuacion[2]) + ecuacion[3] − ecuacion[4]
+
+    RETORNAR resultado
+
+FIN FUNCIÓN
+
+
+// FUNCIÓN: ingresarNumeros
+
+FUNCIÓN ingresarNumeros(filaActual)
+
+    numerosIngresados = []
+
+    PARA CADA celda numérica EN filaActual:
+        LEER numero
+        AGREGAR numero A numerosIngresados
+    FIN PARA
+
+    RETORNAR numerosIngresados
+
+FIN FUNCIÓN
+
+
+// FUNCIÓN: validarEntrada
+
+FUNCIÓN validarEntrada(numeros, rango)
+
+    PARA CADA numero EN numeros:
+
+        SI numero < 1 O numero > rango ENTONCES
+            RETORNAR falso, "Número fuera de rango"
+        FIN SI
+
+        SI numero ya aparece en numeros ENTONCES
+            RETORNAR falso, "¡Solo puedes usar un dígito una vez!"
+        FIN SI
+
+    FIN PARA
+
+    RETORNAR verdadero
+
+FIN FUNCIÓN
+
+
+// FUNCIÓN: compararConSolucion
+
+FUNCIÓN compararConSolucion(intentoActual, ecuacionSecreta)
+
+    estado = []
+
+    PARA CADA posición i EN intentoActual:
+
+        SI intentoActual[i] == ecuacionSecreta[i] ENTONCES
+            estado[i] = VERDE             // Número en posición correcta
+
+        SINO SI intentoActual[i] está en ecuacionSecreta ENTONCES
+            estado[i] = AMARILLO          // Existe pero esta mal ubicado
+
+        SINO
+            estado[i] = GRIS              // No pertenece a la ecuación
+
+        FIN SI
+
+    FIN PARA
+
+    RETORNAR estado
+
+FIN FUNCIÓN
+
+
+// FUNCIÓN: mostrarColores
+
+FUNCIÓN mostrarColores(estado, fila)
+
+    PARA CADA celda i EN fila:
+
+        SEGÚN estado[i]:
+            VERDE    → pintar celda i de verde
+            AMARILLO → pintar celda i de amarillo
+            GRIS     → pintar celda i de gris
+        FIN SEGÚN
+
+    FIN PARA
+
+FIN FUNCIÓN
+
+
+// FUNCIÓN: mostrarVictoria
+
+FUNCIÓN mostrarVictoria()
+
+    MOSTRAR "¡Correcto! Resolviste el Ooodle"
+    MOSTRAR estadísticas del juego
+    MOSTRAR distribución de intentos
+
+FIN FUNCIÓN
+
+
+// FUNCIÓN: mostrarDerrota
+
+FUNCIÓN mostrarDerrota()
+
+    MOSTRAR "Se acabaron los intentos"
+
+FIN FUNCIÓN
+
+
+// FUNCIÓN: incrementarIntento
+
+FUNCIÓN incrementarIntento()
+
+    intentos = intentos + 1
+
+FIN FUNCIÓN
+
+
+// FLUJO PRINCIPAL
+
+INICIO
+
+    inicializarJuego()
+    mostrarTablero()
+
+    MIENTRAS intentos < maxIntentos:
+
+        numeros = ingresarNumeros(intentos)
+
+        SI NO validarEntrada(numeros, rango) ENTONCES
+            MOSTRAR mensaje de error
+            REPETIR entrada               // vuelve al inicio del ciclo
+        FIN SI
+
+        resultado = calcularResultado(numeros)
+        estado    = compararConSolucion(numeros, ecuacionSecreta)
+        mostrarColores(estado, filaActual)
+
+        SI todos los estados == VERDE ENTONCES
+            mostrarVictoria()
+            TERMINAR
+        FIN SI
+
+        incrementarIntento()
+
+    FIN MIENTRAS
+
+    mostrarDerrota()
+
+FIN
