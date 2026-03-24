@@ -8,7 +8,19 @@ El sistema permite al usuario ingresar ecuaciones como intentos de solución par
 
 ---
 
-## 2. Objetivo del Proyecto
+## 2. Descripción del Proyecto
+
+Ooodle es un juego de lógica y matemáticas en el que el jugador debe completar ecuaciones utilizando números dentro de un rango determinado (por ejemplo, del 1 al 9 o del 1 al 12), con el objetivo de obtener un resultado correcto.
+
+El juego presenta una cuadrícula donde el usuario ubica números en posiciones específicas para resolver una ecuación. A través de cada intento, el sistema proporciona retroalimentación visual mediante colores:
+
+- Verde: El número está en la posición correcta.
+- Amarillo: El número está en la posición incorrecta.
+- Gris: El número no pertenece a la ecuación
+
+---
+
+## 3. Objetivo del Proyecto
 
 Desarrollar una aplicación que:
 
@@ -20,17 +32,19 @@ Desarrollar una aplicación que:
 
 ---
 
-## 3. Tecnologías Utilizadas
+## 4. Tecnologías Utilizadas
 
 - **Lenguaje de programación:** Java 17+
 - **Framework gráfico:** JavaFX
 - **Gestor de dependencias:** Maven
 - **Base de datos:** MySQL
+- **Control de versiones:** GitHub
+- **Arquitectura:** MVC (Modelo - Vista - Controlador)
 - **Entorno de desarrollo:** Visual Studio Code
 
 ---
 
-## 4. Requisitos del Sistema
+## 5. Requisitos del Sistema
 
 Para ejecutar correctamente la aplicación se requiere:
 
@@ -38,24 +52,42 @@ Para ejecutar correctamente la aplicación se requiere:
 - Maven instalado y configurado.
 - MySQL Server en ejecución.
 - JavaFX SDK correctamente enlazado.
-- IDE compatible (Visual Studio Code recomendado).
+- IDE compatible (Visual Studio Code).
 
 ---
 
-## 5. Funcionalidades Implementadas
+## 6. Funcionalidades Implementadas
 
 - Ingreso de ecuaciones por parte del usuario.
 - Registro de cada ecuación como un intento.
-- Validación automática al presionar el botón correspondiente.
+- Validación automática al presionar el botón “Validar Ecuación”.
 - Verificación de:
   - Orden correcto de operaciones.
   - Uso de números dentro del rango permitido.
   - Uso único de cada número.
+- Retroalimentación visual mediante colores. 
 - Detección y visualización de errores específicos.
-- Contador de intentos realizados.
+- Contador de intentos.
+- Visualización de temporizador.
 - Detección de condición de victoria.
 - Detección de condición de derrota.
 - Finalización automática de la partida.
-- Persistencia de datos en base de datos MySQL.
+
+---
+
+## 7. Arquitectura del Sistema (MVC)
+
+El proyecto está desarrollado bajo el patrón de arquitectura MVC (Modelo - Vista - Controlador), lo que permite una mejor organización del código y facilita su mantenimiento.
+
+- Modelo (Model): Maneja la lógica del juego, validaciones, reglas matemáticas y acceso a la base de datos. 
+- Vista (view): Representa la interfaz gráfica del usuario desarrollada en JavaFX, incluyendo la cuadrícula, botones, colores y elementos visuales. 
+- Controlador (Controller): Gestiona la interacción del usuario, procesa los intentos y comunica la vista con el modelo.
+
+---
+
+## 8. Desarrolladores
+
+- Mariana López Tovar
+- Alexis Santiago Puentes Bohorquez
 
 ---
