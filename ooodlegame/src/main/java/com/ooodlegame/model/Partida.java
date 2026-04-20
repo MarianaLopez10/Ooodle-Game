@@ -1,5 +1,5 @@
 package com.ooodlegame.model;
 
-public class Juego {
+public class Partida {
     
 }

@@ -4,18 +4,18 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class ConexionDB {
+public class ConexionBD {
 
-    private static ConexionDB instancia;
+    private static ConexionBD instancia;
     private String url = "jdbc:mysql://localhost:3306/ooodle";
     private String usuario = "root";
     private String contrasena = " ";
 
-    private ConexionDB() { }
+    private ConexionBD() { }
 
-    public static ConexionDB getInstance() {
+    public static ConexionBD getInstance() {
         if (instancia == null) {
-            instancia = new ConexionDB();
+            instancia = new ConexionBD();
         }
         return instancia;
     }
