@@ -14,6 +14,6 @@
    <Button text="1 - 9" onAction="#definirRango" />
    <Button text="1 - 12" onAction="#definirRango" />
 
-   <Button text="Iniciar partida" onAction="#iniciarJuego" />
+   <Button fx:id="btnIniciar" text="Iniciar partida" onAction="#iniciarJuego"/>
 
 </VBox>
