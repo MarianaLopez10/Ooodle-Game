@@ -22,9 +22,8 @@ public class JuegoController {
     private Timeline timeline;
     private int segundos;
 
-    /**
-     * Se ejecuta automáticamente al cargar juego.fxml
-     */
+    
+    // Se ejecuta automáticamente al cargar juego.fxml
     @FXML
     public void initialize() {
         segundos = 0;
