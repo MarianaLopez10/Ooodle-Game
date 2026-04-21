@@ -14,7 +14,7 @@ public class App extends Application {
                 getClass().getResource("/com/ooodlegame/view/inicio.fxml")
         );
 
-        Scene scene = new Scene(loader.load());
+        Scene scene = new Scene(loader.load(), 900, 500);
 
         stage.setTitle("Ooodle Game");
         stage.setScene(scene);
