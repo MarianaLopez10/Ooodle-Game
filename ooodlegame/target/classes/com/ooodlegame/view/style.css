@@ -1,10 +1,14 @@
+.root{
+    -fx-font-family: "Nunito";
+}
+
 /* ─── Fondo ─────────────────────────────────────────────── */
 .background-gradient {
     -fx-background-color: linear-gradient(
         to bottom right,
-        #cdd7f0,   /* azul lavanda */
-        #e8d8ef,   /* lila suave */
-        #f5e6d8    /* melocotón cálido */
+        #cdd7f0,
+        #e8d8ef,
+        #f5e6d8
     );
 }
 
@@ -13,13 +17,11 @@
     -fx-font-size: 52px;
     -fx-font-weight: bold;
     -fx-text-fill: #1a1a2e;
-    -fx-font-family: "Segoe UI";
 }
 
 .subtitle-label {
     -fx-font-size: 18px;
     -fx-text-fill: #6b6b80;
-    -fx-font-family: "Segoe UI";
 }
 
 .range-button {
@@ -69,7 +71,6 @@
     -fx-font-size: 40px;
     -fx-font-weight: bold;
     -fx-text-fill: #1a1a2e;
-    -fx-font-family: "Segoe UI";
 }
 
 .back-button {
@@ -89,7 +90,7 @@
     -fx-background-color: #f0f0f8;
 }
 
-/* Celdas de entrada (TextField) */
+/* Celdas de entrada */
 .cell-input {
     -fx-pref-width: 68px;
     -fx-pref-height: 68px;
@@ -111,7 +112,6 @@
     -fx-effect: dropshadow(gaussian, rgba(59,111,232,0.25), 8, 0, 0, 2);
 }
 
-/* Celda activa (fila actual) */
 .cell-active {
     -fx-border-color: #3b6fe8;
     -fx-border-width: 2px;
@@ -125,7 +125,7 @@
     -fx-alignment: center;
 }
 
-/* Celda resultado (Label al final de cada fila) */
+/* Resultado */
 .result-cell {
     -fx-pref-width: 68px;
     -fx-pref-height: 68px;
@@ -141,14 +141,13 @@
     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.06), 4, 0, 0, 1);
 }
 
-/* Resultado revelado (rosa/salmon como en el mockup) */
 .result-cell-revealed {
     -fx-background-color: #f28b8b;
     -fx-text-fill: #8b1a1a;
     -fx-border-color: #e07070;
 }
 
-/* Estados de feedback tras validar */
+/* Estados */
 .cell-correct {
     -fx-background-color: #2ecc71;
     -fx-text-fill: white;
