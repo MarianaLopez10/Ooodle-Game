@@ -31,12 +31,12 @@
             <Button fx:id="btn1to9"
                     text="1 - 9"
                     styleClass="range-button, range-button-selected"
-                    onAction="#onRange1to9Selected"
+                    onAction="#definirRango"
                     prefWidth="120" prefHeight="54"/>
             <Button fx:id="btn1to12"
                     text="1 - 12"
                     styleClass="range-button"
-                    onAction="#onRange1to12Selected"
+                    onAction="#definirRango"
                     prefWidth="120" prefHeight="54"/>
         </HBox>
 
