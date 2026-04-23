@@ -1,19 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
 
-<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/8.0.171"
-   xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ooodlegame.controller.InicioController">
+<StackPane xmlns="http://javafx.com/javafx/21"
+           xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="com.ooodlegame.controller.InicioControllerr"
+           prefWidth="1440" prefHeight="835"
+           stylesheets="@style.css">
 
-   <Label text="Ooodle Game" style="-fx-font-size: 30px; -fx-font-weight: bold;" />
+    <!-- Fondo con gradiente (definido en CSS) -->
+    <Region styleClass="background-gradient" maxWidth="Infinity" maxHeight="Infinity"/>
 
-   <Label text="Selecciona un rango" />
+    <!-- Contenido central -->
+    <VBox alignment="CENTER" spacing="24">
 
-   <Button text="1 - 9" onAction="#definirRango" />
-   <Button text="1 - 12" onAction="#definirRango" />
+        <!-- Título -->
+        <Label text="Ooodle Game" styleClass="title-label"/>
 
-   <Button fx:id="btnIniciar" text="Iniciar partida" onAction="#iniciarJuego"/>
+        <!-- Subtítulo -->
+        <Label text="Selecciona un rango" styleClass="subtitle-label"/>
 
-</VBox>
+        <!-- Botones de rango -->
+        <HBox alignment="CENTER" spacing="16">
+            <Button fx:id="btn1to9"
+                    text="1 - 9"
+                    styleClass="range-button, range-button-selected"
+                    onAction="#onRange1to9Selected"
+                    prefWidth="120" prefHeight="54"/>
+            <Button fx:id="btn1to12"
+                    text="1 - 12"
+                    styleClass="range-button"
+                    onAction="#onRange1to12Selected"
+                    prefWidth="120" prefHeight="54"/>
+        </HBox>
+
+        <!-- Botón Iniciar -->
+        <Button text="Iniciar partida"
+                styleClass="start-button"
+                onAction="#iniciarJuego"
+                prefWidth="220" prefHeight="54">
+            <VBox.margin>
+                <Insets top="8"/>
+            </VBox.margin>
+        </Button>
+
+    </VBox>
+
+</StackPane>
