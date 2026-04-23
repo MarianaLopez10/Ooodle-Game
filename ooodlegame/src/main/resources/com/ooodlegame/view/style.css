@@ -4,12 +4,7 @@
 
 /* ─── Fondo ─────────────────────────────────────────────── */
 .background-gradient {
-    -fx-background-color: linear-gradient(
-        to bottom right,
-        #cdd7f0,
-        #e8d8ef,
-        #f5e6d8
-    );
+    -fx-background-color: white;
 }
 
 /* ─── Pantalla de Inicio ────────────────────────────────── */
