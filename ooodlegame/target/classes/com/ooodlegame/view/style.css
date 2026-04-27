@@ -2,68 +2,66 @@
     -fx-font-family: "Nunito";
 }
 
-/* ─── Fondo ─────────────────────────────────────────────── */
-.background-gradient {
-    -fx-background-color: linear-gradient(
-        to bottom right,
-        #cdd7f0,
-        #e8d8ef,
-        #f5e6d8
-    );
+/* Fondo */
+.fondo-blanco{
+    -fx-background-color: white;
 }
 
-/* ─── Pantalla de Inicio ────────────────────────────────── */
-.title-label {
-    -fx-font-size: 52px;
+/* Títulos */
+.etiqueta-titulo{
+    -fx-font-size: 54px;
     -fx-font-weight: bold;
     -fx-text-fill: #1a1a2e;
 }
 
-.subtitle-label {
+.etiqueta-subtitulo{
     -fx-font-size: 18px;
-    -fx-text-fill: #6b6b80;
+    -fx-text-fill: #7b7b90;
 }
 
-.range-button {
+/* Botones de rango */
+.boton-rango{
     -fx-background-color: white;
     -fx-text-fill: #1a1a2e;
     -fx-font-size: 16px;
     -fx-font-weight: bold;
     -fx-background-radius: 14px;
     -fx-border-radius: 14px;
-    -fx-border-color: #d0d0d8;
+    -fx-border-color: #d8dbe8;
     -fx-border-width: 1.5px;
     -fx-cursor: hand;
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 6, 0, 0, 2);
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 8, 0, 0, 2);
 }
 
-.range-button:hover {
-    -fx-background-color: #f0f0f8;
+.boton-rango:hover{
+    -fx-background-color: #f3f6ff;
 }
 
-.range-button-selected {
+/* Botón activo */
+.boton-rango-seleccionado{
     -fx-background-color: #3b6fe8;
     -fx-text-fill: white;
     -fx-border-color: #3b6fe8;
-    -fx-effect: dropshadow(gaussian, rgba(59,111,232,0.35), 10, 0, 0, 3);
+    -fx-effect: dropshadow(gaussian, rgba(59,111,232,0.35), 12, 0, 0, 4);
 }
 
-.range-button-selected:hover {
-    -fx-background-color: #2d5fd4;
+.boton-rango-seleccionado:hover{
+    -fx-background-color: #2f61db;
 }
 
-.start-button {
+/* Botón iniciar */
+.boton-iniciar{
     -fx-background-color: #2ecc71;
     -fx-text-fill: white;
     -fx-font-size: 17px;
     -fx-font-weight: bold;
     -fx-background-radius: 14px;
     -fx-cursor: hand;
-    -fx-effect: dropshadow(gaussian, rgba(46,204,113,0.40), 12, 0, 0, 4);
+    -fx-effect: dropshadow(gaussian, rgba(46,204,113,0.35), 12, 0, 0, 4);
 }
 
-.start-button:hover {
-    -fx-background-color: #27ae60;
+.boton-iniciar:hover{
+    -fx-background-color: #28b765;
 }
 
 /* ─── Pantalla de Juego ─────────────────────────────────── */

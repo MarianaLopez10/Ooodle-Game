@@ -1,5 +1,6 @@
 package com.ooodlegame.controller;
 
+import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -11,36 +12,63 @@ import javafx.stage.Stage;
 public class InicioController {
 
     @FXML
-    private Button btnIniciar;
-
-    // Valor por defecto
-    private int rangoMax = 9;
+    private Button btn1a9;
 
     @FXML
-    private void definirRango(ActionEvent event) {
-        Button btn = (Button) event.getSource();
-        String texto = btn.getText();
+    private Button btn1a12;
 
-        if (texto.equals("1 - 9")) {
-            rangoMax = 9;
-        } else if (texto.equals("1 - 12")) {
-            rangoMax = 12;
-        }
+    @FXML
+    private Button btnIniciar;
+
+    private int rangoMax;
+
+    @FXML
+    public void initialize() {
+        rangoMax = 9;
+        seleccionarBoton(btn1a9);
     }
 
     @FXML
-    private void iniciarJuego() throws Exception {
+    private void definirRango(ActionEvent event) {
 
-        FXMLLoader loader = new FXMLLoader(
-                getClass().getResource("/com/ooodlegame/view/juego.fxml"));
+        Button botonActivo = (Button) event.getSource();
 
-        Parent root = loader.load();
+        if (botonActivo == btn1a9) {
+            rangoMax = 9;
+        } else {
+            rangoMax = 12;
+        }
 
-        JuegoController controller = loader.getController();
-        controller.iniciarPartida(rangoMax);
+        seleccionarBoton(botonActivo);
+    }
 
-        Stage stage = (Stage) btnIniciar.getScene().getWindow();
-        stage.setScene(new Scene(root));
-        stage.show();
+    private void seleccionarBoton(Button botonActivo) {
+
+        btn1a9.getStyleClass().remove("boton-rango-seleccionado");
+        btn1a12.getStyleClass().remove("boton-rango-seleccionado");
+
+        botonActivo.getStyleClass().add("boton-rango-seleccionado");
+    }
+
+    @FXML
+    private void iniciarJuego() {
+
+        try {
+            FXMLLoader loader = new FXMLLoader(
+                    getClass().getResource("/com/ooodlegame/view/juego.fxml")
+            );
+
+            Parent root = loader.load();
+
+            JuegoController controlador = loader.getController();
+            controlador.iniciarPartida(rangoMax);
+
+            Stage escenario = (Stage) btnIniciar.getScene().getWindow();
+            escenario.setScene(new Scene(root));
+            escenario.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
