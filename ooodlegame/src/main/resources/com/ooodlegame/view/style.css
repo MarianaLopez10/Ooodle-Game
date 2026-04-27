@@ -2,7 +2,7 @@
     -fx-font-family: "Nunito";
 }
 
-/* Fondo */
+/* ───────── Pantalla de Inicio ───────── */
 .fondo-blanco{
     -fx-background-color: white;
 }
@@ -64,14 +64,17 @@
     -fx-background-color: #28b765;
 }
 
-/* ─── Pantalla de Juego ─────────────────────────────────── */
-.game-title-label {
+/* ───────── Pantalla de Juego ───────── */
+
+/* Título juego */
+.etiqueta-juego-titulo{
     -fx-font-size: 40px;
     -fx-font-weight: bold;
     -fx-text-fill: #1a1a2e;
 }
 
-.back-button {
+/* Botón volver */
+.boton-volver{
     -fx-background-color: white;
     -fx-text-fill: #1a1a2e;
     -fx-font-size: 14px;
@@ -84,12 +87,12 @@
     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 6, 0, 0, 2);
 }
 
-.back-button:hover {
+.boton-volver:hover{
     -fx-background-color: #f0f0f8;
 }
 
-/* Celdas de entrada */
-.cell-input {
+/* Campos de entrada */
+.campo-celda{
     -fx-pref-width: 68px;
     -fx-pref-height: 68px;
     -fx-background-color: white;
@@ -104,19 +107,20 @@
     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.06), 4, 0, 0, 1);
 }
 
-.cell-input:focused {
+.campo-celda:focused{
     -fx-border-color: #3b6fe8;
     -fx-border-width: 2.5px;
     -fx-effect: dropshadow(gaussian, rgba(59,111,232,0.25), 8, 0, 0, 2);
 }
 
-.cell-active {
+/* Campo activo */
+.campo-activo{
     -fx-border-color: #3b6fe8;
     -fx-border-width: 2px;
 }
 
 /* Operadores */
-.operator-label {
+.etiqueta-operador{
     -fx-font-size: 20px;
     -fx-text-fill: #8888a0;
     -fx-min-width: 20px;
@@ -124,7 +128,7 @@
 }
 
 /* Resultado */
-.result-cell {
+.celda-resultado{
     -fx-pref-width: 68px;
     -fx-pref-height: 68px;
     -fx-background-color: white;
@@ -139,33 +143,34 @@
     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.06), 4, 0, 0, 1);
 }
 
-.result-cell-revealed {
+/* Resultado visible */
+.celda-resultado-visible{
     -fx-background-color: #f28b8b;
     -fx-text-fill: #8b1a1a;
     -fx-border-color: #e07070;
 }
 
 /* Estados */
-.cell-correct {
+.celda-correcta{
     -fx-background-color: #2ecc71;
     -fx-text-fill: white;
     -fx-border-color: #27ae60;
 }
 
-.cell-present {
+.celda-presente{
     -fx-background-color: #f39c12;
     -fx-text-fill: white;
     -fx-border-color: #d68910;
 }
 
-.cell-absent {
+.celda-ausente{
     -fx-background-color: #95a5a6;
     -fx-text-fill: white;
     -fx-border-color: #7f8c8d;
 }
 
-/* Botón Validar */
-.validate-button {
+/* Botón validar */
+.boton-validar{
     -fx-background-color: #f28b8b;
     -fx-text-fill: #5a1010;
     -fx-font-size: 17px;
@@ -175,7 +180,7 @@
     -fx-effect: dropshadow(gaussian, rgba(242,139,139,0.40), 12, 0, 0, 4);
 }
 
-.validate-button:hover {
+.boton-validar:hover{
     -fx-background-color: #e07070;
     -fx-text-fill: white;
 }

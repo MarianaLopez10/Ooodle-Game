@@ -5,7 +5,6 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
@@ -13,163 +12,180 @@
 <StackPane xmlns="http://javafx.com/javafx/21"
            xmlns:fx="http://javafx.com/fxml/1"
            fx:controller="com.ooodlegame.controller.JuegoController"
-           prefWidth="1440" prefHeight="835"
+           prefWidth="1440"
+           prefHeight="835"
            stylesheets="@style.css">
 
-    <!-- Fondo con gradiente -->
-    <Region styleClass="background-gradient" maxWidth="Infinity" maxHeight="Infinity"/>
+    <!-- Fondo -->
+    <Region styleClass="fondo-blanco"
+            maxWidth="Infinity"
+            maxHeight="Infinity"/>
 
-    <!-- Botón Volver (esquina superior izquierda) -->
+    <!-- Botón volver -->
     <Button text="Volver"
-            styleClass="back-button"
-            onAction="#onVolver"
+            styleClass="boton-volver"
+            onAction="#volver"
             StackPane.alignment="TOP_LEFT">
+
         <StackPane.margin>
             <Insets top="20" left="20"/>
         </StackPane.margin>
+
     </Button>
 
-    <!-- Contenido central -->
+    <!-- Contenido -->
     <VBox alignment="CENTER" spacing="20">
 
         <!-- Título -->
-        <Label text="Ooodle" styleClass="game-title-label"/>
+        <Label text="Ooodle"
+               styleClass="etiqueta-juego-titulo"/>
 
-        <!-- Grilla de 6 intentos -->
-        <GridPane fx:id="gridPane"
+        <!-- Tabla de intentos -->
+        <GridPane fx:id="panelCuadricula"
                   alignment="CENTER"
-                  hgap="8" vgap="8">
+                  hgap="8"
+                  vgap="8">
 
-            <!-- Fila 0 (activa, con resultado revelado) -->
-            <TextField fx:id="r0c0" styleClass="cell-input, cell-active"
+            <!-- FILA 0 -->
+            <TextField fx:id="r0c0" styleClass="campo-celda campo-activo"
                        GridPane.rowIndex="0" GridPane.columnIndex="0"/>
-            <Label text="×" styleClass="operator-label"
+            <Label text="×" styleClass="etiqueta-operador"
                    GridPane.rowIndex="0" GridPane.columnIndex="1"/>
-            <TextField fx:id="r0c1" styleClass="cell-input, cell-active"
+            <TextField fx:id="r0c1" styleClass="campo-celda campo-activo"
                        GridPane.rowIndex="0" GridPane.columnIndex="2"/>
-            <Label text="+" styleClass="operator-label"
+            <Label text="+" styleClass="etiqueta-operador"
                    GridPane.rowIndex="0" GridPane.columnIndex="3"/>
-            <TextField fx:id="r0c2" styleClass="cell-input, cell-active"
+            <TextField fx:id="r0c2" styleClass="campo-celda campo-activo"
                        GridPane.rowIndex="0" GridPane.columnIndex="4"/>
-            <Label text="-" styleClass="operator-label"
+            <Label text="-" styleClass="etiqueta-operador"
                    GridPane.rowIndex="0" GridPane.columnIndex="5"/>
-            <TextField fx:id="r0c3" styleClass="cell-input, cell-active"
+            <TextField fx:id="r0c3" styleClass="campo-celda campo-activo"
                        GridPane.rowIndex="0" GridPane.columnIndex="6"/>
-            <Label text="=" styleClass="operator-label"
+            <Label text="=" styleClass="etiqueta-operador"
                    GridPane.rowIndex="0" GridPane.columnIndex="7"/>
-            <Label fx:id="r0result" text="42" styleClass="result-cell, result-cell-revealed"
+            <Label fx:id="r0resultado"
+                   text="42"
+                   styleClass="celda-resultado celda-resultado-visible"
                    GridPane.rowIndex="0" GridPane.columnIndex="8"/>
 
-            <!-- Fila 1 -->
-            <TextField fx:id="r1c0" styleClass="cell-input"
+            <!-- FILA 1 -->
+            <TextField fx:id="r1c0" styleClass="campo-celda"
                        GridPane.rowIndex="1" GridPane.columnIndex="0"/>
-            <Label text="×" styleClass="operator-label"
+            <Label text="×" styleClass="etiqueta-operador"
                    GridPane.rowIndex="1" GridPane.columnIndex="1"/>
-            <TextField fx:id="r1c1" styleClass="cell-input"
+            <TextField fx:id="r1c1" styleClass="campo-celda"
                        GridPane.rowIndex="1" GridPane.columnIndex="2"/>
-            <Label text="+" styleClass="operator-label"
+            <Label text="+" styleClass="etiqueta-operador"
                    GridPane.rowIndex="1" GridPane.columnIndex="3"/>
-            <TextField fx:id="r1c2" styleClass="cell-input"
+            <TextField fx:id="r1c2" styleClass="campo-celda"
                        GridPane.rowIndex="1" GridPane.columnIndex="4"/>
-            <Label text="-" styleClass="operator-label"
+            <Label text="-" styleClass="etiqueta-operador"
                    GridPane.rowIndex="1" GridPane.columnIndex="5"/>
-            <TextField fx:id="r1c3" styleClass="cell-input"
+            <TextField fx:id="r1c3" styleClass="campo-celda"
                        GridPane.rowIndex="1" GridPane.columnIndex="6"/>
-            <Label text="=" styleClass="operator-label"
+            <Label text="=" styleClass="etiqueta-operador"
                    GridPane.rowIndex="1" GridPane.columnIndex="7"/>
-            <Label fx:id="r1result" styleClass="result-cell"
+            <Label fx:id="r1resultado"
+                   styleClass="celda-resultado"
                    GridPane.rowIndex="1" GridPane.columnIndex="8"/>
 
-            <!-- Fila 2 -->
-            <TextField fx:id="r2c0" styleClass="cell-input"
+            <!-- FILA 2 -->
+            <TextField fx:id="r2c0" styleClass="campo-celda"
                        GridPane.rowIndex="2" GridPane.columnIndex="0"/>
-            <Label text="×" styleClass="operator-label"
+            <Label text="×" styleClass="etiqueta-operador"
                    GridPane.rowIndex="2" GridPane.columnIndex="1"/>
-            <TextField fx:id="r2c1" styleClass="cell-input"
+            <TextField fx:id="r2c1" styleClass="campo-celda"
                        GridPane.rowIndex="2" GridPane.columnIndex="2"/>
-            <Label text="+" styleClass="operator-label"
+            <Label text="+" styleClass="etiqueta-operador"
                    GridPane.rowIndex="2" GridPane.columnIndex="3"/>
-            <TextField fx:id="r2c2" styleClass="cell-input"
+            <TextField fx:id="r2c2" styleClass="campo-celda"
                        GridPane.rowIndex="2" GridPane.columnIndex="4"/>
-            <Label text="-" styleClass="operator-label"
+            <Label text="-" styleClass="etiqueta-operador"
                    GridPane.rowIndex="2" GridPane.columnIndex="5"/>
-            <TextField fx:id="r2c3" styleClass="cell-input"
+            <TextField fx:id="r2c3" styleClass="campo-celda"
                        GridPane.rowIndex="2" GridPane.columnIndex="6"/>
-            <Label text="=" styleClass="operator-label"
+            <Label text="=" styleClass="etiqueta-operador"
                    GridPane.rowIndex="2" GridPane.columnIndex="7"/>
-            <Label fx:id="r2result" styleClass="result-cell"
+            <Label fx:id="r2resultado"
+                   styleClass="celda-resultado"
                    GridPane.rowIndex="2" GridPane.columnIndex="8"/>
 
-            <!-- Fila 3 -->
-            <TextField fx:id="r3c0" styleClass="cell-input"
+            <!-- FILA 3 -->
+            <TextField fx:id="r3c0" styleClass="campo-celda"
                        GridPane.rowIndex="3" GridPane.columnIndex="0"/>
-            <Label text="×" styleClass="operator-label"
+            <Label text="×" styleClass="etiqueta-operador"
                    GridPane.rowIndex="3" GridPane.columnIndex="1"/>
-            <TextField fx:id="r3c1" styleClass="cell-input"
+            <TextField fx:id="r3c1" styleClass="campo-celda"
                        GridPane.rowIndex="3" GridPane.columnIndex="2"/>
-            <Label text="+" styleClass="operator-label"
+            <Label text="+" styleClass="etiqueta-operador"
                    GridPane.rowIndex="3" GridPane.columnIndex="3"/>
-            <TextField fx:id="r3c2" styleClass="cell-input"
+            <TextField fx:id="r3c2" styleClass="campo-celda"
                        GridPane.rowIndex="3" GridPane.columnIndex="4"/>
-            <Label text="-" styleClass="operator-label"
+            <Label text="-" styleClass="etiqueta-operador"
                    GridPane.rowIndex="3" GridPane.columnIndex="5"/>
-            <TextField fx:id="r3c3" styleClass="cell-input"
+            <TextField fx:id="r3c3" styleClass="campo-celda"
                        GridPane.rowIndex="3" GridPane.columnIndex="6"/>
-            <Label text="=" styleClass="operator-label"
+            <Label text="=" styleClass="etiqueta-operador"
                    GridPane.rowIndex="3" GridPane.columnIndex="7"/>
-            <Label fx:id="r3result" styleClass="result-cell"
+            <Label fx:id="r3resultado"
+                   styleClass="celda-resultado"
                    GridPane.rowIndex="3" GridPane.columnIndex="8"/>
 
-            <!-- Fila 4 -->
-            <TextField fx:id="r4c0" styleClass="cell-input"
+            <!-- FILA 4 -->
+            <TextField fx:id="r4c0" styleClass="campo-celda"
                        GridPane.rowIndex="4" GridPane.columnIndex="0"/>
-            <Label text="×" styleClass="operator-label"
+            <Label text="×" styleClass="etiqueta-operador"
                    GridPane.rowIndex="4" GridPane.columnIndex="1"/>
-            <TextField fx:id="r4c1" styleClass="cell-input"
+            <TextField fx:id="r4c1" styleClass="campo-celda"
                        GridPane.rowIndex="4" GridPane.columnIndex="2"/>
-            <Label text="+" styleClass="operator-label"
+            <Label text="+" styleClass="etiqueta-operador"
                    GridPane.rowIndex="4" GridPane.columnIndex="3"/>
-            <TextField fx:id="r4c2" styleClass="cell-input"
+            <TextField fx:id="r4c2" styleClass="campo-celda"
                        GridPane.rowIndex="4" GridPane.columnIndex="4"/>
-            <Label text="-" styleClass="operator-label"
+            <Label text="-" styleClass="etiqueta-operador"
                    GridPane.rowIndex="4" GridPane.columnIndex="5"/>
-            <TextField fx:id="r4c3" styleClass="cell-input"
+            <TextField fx:id="r4c3" styleClass="campo-celda"
                        GridPane.rowIndex="4" GridPane.columnIndex="6"/>
-            <Label text="=" styleClass="operator-label"
+            <Label text="=" styleClass="etiqueta-operador"
                    GridPane.rowIndex="4" GridPane.columnIndex="7"/>
-            <Label fx:id="r4result" styleClass="result-cell"
+            <Label fx:id="r4resultado"
+                   styleClass="celda-resultado"
                    GridPane.rowIndex="4" GridPane.columnIndex="8"/>
 
-            <!-- Fila 5 -->
-            <TextField fx:id="r5c0" styleClass="cell-input"
+            <!-- FILA 5 -->
+            <TextField fx:id="r5c0" styleClass="campo-celda"
                        GridPane.rowIndex="5" GridPane.columnIndex="0"/>
-            <Label text="×" styleClass="operator-label"
+            <Label text="×" styleClass="etiqueta-operador"
                    GridPane.rowIndex="5" GridPane.columnIndex="1"/>
-            <TextField fx:id="r5c1" styleClass="cell-input"
+            <TextField fx:id="r5c1" styleClass="campo-celda"
                        GridPane.rowIndex="5" GridPane.columnIndex="2"/>
-            <Label text="+" styleClass="operator-label"
+            <Label text="+" styleClass="etiqueta-operador"
                    GridPane.rowIndex="5" GridPane.columnIndex="3"/>
-            <TextField fx:id="r5c2" styleClass="cell-input"
+            <TextField fx:id="r5c2" styleClass="campo-celda"
                        GridPane.rowIndex="5" GridPane.columnIndex="4"/>
-            <Label text="-" styleClass="operator-label"
+            <Label text="-" styleClass="etiqueta-operador"
                    GridPane.rowIndex="5" GridPane.columnIndex="5"/>
-            <TextField fx:id="r5c3" styleClass="cell-input"
+            <TextField fx:id="r5c3" styleClass="campo-celda"
                        GridPane.rowIndex="5" GridPane.columnIndex="6"/>
-            <Label text="=" styleClass="operator-label"
+            <Label text="=" styleClass="etiqueta-operador"
                    GridPane.rowIndex="5" GridPane.columnIndex="7"/>
-            <Label fx:id="r5result" styleClass="result-cell"
+            <Label fx:id="r5resultado"
+                   styleClass="celda-resultado"
                    GridPane.rowIndex="5" GridPane.columnIndex="8"/>
 
         </GridPane>
 
-        <!-- Botón Validar -->
+        <!-- Botón validar -->
         <Button text="Validar ecuación"
-                styleClass="validate-button"
-                onAction="#onValidarEcuacion"
-                prefWidth="220" prefHeight="54">
+                styleClass="boton-validar"
+                onAction="#validarEcuacion"
+                prefWidth="220"
+                prefHeight="54">
+
             <VBox.margin>
                 <Insets top="8"/>
             </VBox.margin>
+
         </Button>
 
     </VBox>
