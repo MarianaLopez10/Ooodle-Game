@@ -1,1 +1,11 @@
-com\ooodlegame\model\App.class
+com\ooodlegame\services\EcuacionDAO.class
+com\ooodlegame\App.class
+com\ooodlegame\services\ConexionBD.class
+com\ooodlegame\model\Temporizador.class
+com\ooodlegame\controller\InicioController.class
+com\ooodlegame\controller\JuegoController$1.class
+com\ooodlegame\controller\JuegoController.class
+com\ooodlegame\model\Intento.class
+com\ooodlegame\model\Ecuacion.class
+com\ooodlegame\model\EstadoCelda.class
+com\ooodlegame\model\Partida.class
