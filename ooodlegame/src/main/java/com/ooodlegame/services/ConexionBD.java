@@ -9,7 +9,7 @@ public class ConexionBD {
     private static ConexionBD instancia;
     private String url = "jdbc:mysql://localhost:3306/ooodle";
     private String usuario = "root";
-    private String contrasena = " ";
+    private String contrasena = "";
 
     private ConexionBD() { }
 
