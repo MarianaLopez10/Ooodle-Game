@@ -158,9 +158,9 @@
 }
 
 .celda-presente{
-    -fx-background-color: #f39c12;
+    -fx-background-color: #F5D327;
     -fx-text-fill: white;
-    -fx-border-color: #d68910;
+    -fx-border-color: #E3C636;
 }
 
 .celda-ausente{
