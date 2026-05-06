@@ -1,8 +1,10 @@
 package com.ooodlegame.controller;
 
+import com.ooodlegame.model.Ecuacion;
 import com.ooodlegame.model.EstadoCelda;
 import com.ooodlegame.model.Intento;
 import com.ooodlegame.model.Partida;
+import com.ooodlegame.services.EcuacionDAO;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -121,7 +123,10 @@ public class JuegoController {
         partida = new Partida();
 
         try {
-            partida.iniciarPartida(rango);
+            EcuacionDAO dao = new EcuacionDAO();
+            Ecuacion ecuacion = dao.obtenerEcuacionAleatoria(rango);
+            
+            partida.iniciarPartida(ecuacion);
         } catch (Exception e) {
             mostrarAlerta("Error al iniciar",
                     "No se pudo obtener una ecuación: " + e.getMessage());

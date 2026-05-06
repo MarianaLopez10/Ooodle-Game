@@ -3,8 +3,6 @@ package com.ooodlegame.model;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.ooodlegame.services.EcuacionDAO;
-
 /**
  * Representa una partida del juego Ooodle.
  *
@@ -41,19 +39,16 @@ public class Partida {
     /**
      * Inicia una nueva partida.
      *
-     * Obtiene una ecuación aleatoria según el rango,
+     * Asigna la ecuación secreta,
      * reinicia el estado de la partida,
      * limpia los intentos anteriores
      * y reinicia el temporizador.
      *
-     * @param rango valor máximo permitido para los números
-     * @throws Exception si ocurre error al obtener la ecuación
+     * @param ecuacion ecuación secreta de la partida
      */
-    public void iniciarPartida(int rango) throws Exception {
+    public void iniciarPartida(Ecuacion ecuacion) {
 
-        EcuacionDAO dao = new EcuacionDAO();
-
-        ecuacionSecreta = dao.obtenerEcuacionAleatoria(rango);
+        this.ecuacionSecreta = ecuacion;
 
         intentos.clear();
         ganada = false;
