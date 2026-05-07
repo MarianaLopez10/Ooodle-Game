@@ -22,13 +22,15 @@
               maxHeight="Infinity" />
 
        <!-- Botón volver -->
-       <Button text="Volver"
+       <Button fx:id="botonVolver"
+              text="Volver"
               styleClass="boton-volver"
               onAction="#volver"
+              viewOrder="-1"
               StackPane.alignment="TOP_LEFT">
 
               <StackPane.margin>
-                     <Insets top="20" left="20" />
+                     <Insets top="35" left="50" />
               </StackPane.margin>
 
        </Button>

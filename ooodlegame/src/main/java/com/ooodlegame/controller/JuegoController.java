@@ -82,6 +82,8 @@ public class JuegoController {
     @FXML
     public void initialize() {
 
+         botonVolver.toFront();
+
         campos = new TextField[][] {
             { r0c0, r0c1, r0c2, r0c3 },
             { r1c0, r1c1, r1c2, r1c3 },
