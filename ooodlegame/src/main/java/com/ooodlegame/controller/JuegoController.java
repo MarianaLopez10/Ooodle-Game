@@ -226,7 +226,6 @@ public class JuegoController {
         if (partida.verificarDerrota()) {
             partida.finalizarPartida();
             detenerTemporizadorUI();
-            revelarSolucion();
             mostrarAlerta("¡Perdiste!",
                     "La ecuación secreta era: "
                     + partida.getEcuacionSecreta().getNumeros().toString());
@@ -267,14 +266,6 @@ public class JuegoController {
                 case AMARILLO -> campo.getStyleClass().add("celda-presente");
                 case GRIS     -> campo.getStyleClass().add("celda-ausente");
             }
-        }
-    }
-
-    private void revelarSolucion() {
-        List<Integer> solucion = partida.getEcuacionSecreta().getNumeros();
-        for (int col = 0; col < 4; col++) {
-            campos[filaActual][col].setText(String.valueOf(solucion.get(col)));
-            campos[filaActual][col].getStyleClass().add("celda-correcta");
         }
     }
 
