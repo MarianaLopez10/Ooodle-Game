@@ -22,13 +22,11 @@
 
 /* ───────── Panel de Reglas ───────── */
 .panel-reglas {
-    -fx-background-color: #FFFDB5;
+    -fx-background-color: #e4cdff;
     -fx-background-radius: 24;
     -fx-border-radius: 24;
-
-    -fx-border-color: #FFFD94;
+    -fx-border-color: #d6b2ff;
     -fx-border-width: 2;
-
     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.12), 14, 0, 0, 4);
 }
 
@@ -91,6 +89,8 @@
 
 .boton-iniciar:hover{
     -fx-background-color: #28b765;
+    -fx-text-fill: #136335;
+
 }
 
 /* ───────── Pantalla de Juego ───────── */
@@ -235,4 +235,20 @@
 .boton-validar:hover{
     -fx-background-color: #e07070;
     -fx-text-fill: white;
+}
+
+/* Botón validar */
+.boton-ecuacion{
+    -fx-background-color: #3b6fe8;
+    -fx-text-fill: white;
+    -fx-font-size: 17px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 14px;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(59,111,232,0.35), 12, 0, 0, 4);
+}
+
+.boton-ecuacion:hover{
+    -fx-background-color: #2f61db;
+    -fx-text-fill: #18347a;
 }

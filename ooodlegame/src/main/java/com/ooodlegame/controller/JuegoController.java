@@ -40,67 +40,87 @@ public class JuegoController {
 
     // ── Referencias FXML ──────────────────────────────────────────────────────
 
-    @FXML private GridPane panelCuadricula;
-    @FXML private Button   botonVolver;
+    @FXML
+    private GridPane panelCuadricula;
+    @FXML
+    private Button botonVolver;
 
     // Campos de entrada
-    @FXML private TextField r0c0, r0c1, r0c2, r0c3;
-    @FXML private TextField r1c0, r1c1, r1c2, r1c3;
-    @FXML private TextField r2c0, r2c1, r2c2, r2c3;
-    @FXML private TextField r3c0, r3c1, r3c2, r3c3;
-    @FXML private TextField r4c0, r4c1, r4c2, r4c3;
-    @FXML private TextField r5c0, r5c1, r5c2, r5c3;
+    @FXML
+    private TextField r0c0, r0c1, r0c2, r0c3;
+    @FXML
+    private TextField r1c0, r1c1, r1c2, r1c3;
+    @FXML
+    private TextField r2c0, r2c1, r2c2, r2c3;
+    @FXML
+    private TextField r3c0, r3c1, r3c2, r3c3;
+    @FXML
+    private TextField r4c0, r4c1, r4c2, r4c3;
+    @FXML
+    private TextField r5c0, r5c1, r5c2, r5c3;
 
     // Etiquetas de resultado (la celda roja con el número)
-    @FXML private Label r0resultado;
-    @FXML private Label r1resultado;
-    @FXML private Label r2resultado;
-    @FXML private Label r3resultado;
-    @FXML private Label r4resultado;
-    @FXML private Label r5resultado;
+    @FXML
+    private Label r0resultado;
+    @FXML
+    private Label r1resultado;
+    @FXML
+    private Label r2resultado;
+    @FXML
+    private Label r3resultado;
+    @FXML
+    private Label r4resultado;
+    @FXML
+    private Label r5resultado;
 
     // Etiquetas del operador "=" de cada fila (fx:id="r0igual" … "r5igual")
-    @FXML private Label r0igual;
-    @FXML private Label r1igual;
-    @FXML private Label r2igual;
-    @FXML private Label r3igual;
-    @FXML private Label r4igual;
-    @FXML private Label r5igual;
+    @FXML
+    private Label r0igual;
+    @FXML
+    private Label r1igual;
+    @FXML
+    private Label r2igual;
+    @FXML
+    private Label r3igual;
+    @FXML
+    private Label r4igual;
+    @FXML
+    private Label r5igual;
 
     // ── Estado interno ────────────────────────────────────────────────────────
 
-    private Partida  partida;
-    private int      filaActual = 0;
+    private Partida partida;
+    private int filaActual = 0;
     private Timeline timeline;
 
     private TextField[][] campos;
-    private Label[]       etiquetasResultado;
-    private Label[]       etiquetasIgual;
+    private Label[] etiquetasResultado;
+    private Label[] etiquetasIgual;
 
     // ── Inicialización ────────────────────────────────────────────────────────
 
     @FXML
     public void initialize() {
 
-         botonVolver.toFront();
+        botonVolver.toFront();
 
         campos = new TextField[][] {
-            { r0c0, r0c1, r0c2, r0c3 },
-            { r1c0, r1c1, r1c2, r1c3 },
-            { r2c0, r2c1, r2c2, r2c3 },
-            { r3c0, r3c1, r3c2, r3c3 },
-            { r4c0, r4c1, r4c2, r4c3 },
-            { r5c0, r5c1, r5c2, r5c3 }
+                { r0c0, r0c1, r0c2, r0c3 },
+                { r1c0, r1c1, r1c2, r1c3 },
+                { r2c0, r2c1, r2c2, r2c3 },
+                { r3c0, r3c1, r3c2, r3c3 },
+                { r4c0, r4c1, r4c2, r4c3 },
+                { r5c0, r5c1, r5c2, r5c3 }
         };
 
         etiquetasResultado = new Label[] {
-            r0resultado, r1resultado, r2resultado,
-            r3resultado, r4resultado, r5resultado
+                r0resultado, r1resultado, r2resultado,
+                r3resultado, r4resultado, r5resultado
         };
 
         etiquetasIgual = new Label[] {
-            r0igual, r1igual, r2igual,
-            r3igual, r4igual, r5igual
+                r0igual, r1igual, r2igual,
+                r3igual, r4igual, r5igual
         };
 
         configurarListenersTeclado();
@@ -127,7 +147,7 @@ public class JuegoController {
         try {
             EcuacionDAO dao = new EcuacionDAO();
             Ecuacion ecuacion = dao.obtenerEcuacionAleatoria(rango);
-            
+
             partida.iniciarPartida(ecuacion);
         } catch (Exception e) {
             mostrarAlerta("Error al iniciar",
@@ -157,14 +177,16 @@ public class JuegoController {
     }
 
     private void detenerTemporizadorUI() {
-        if (timeline != null) timeline.stop();
+        if (timeline != null)
+            timeline.stop();
     }
 
     // ── Validación principal ──────────────────────────────────────────────────
 
     @FXML
     private void validarEcuacion() {
-        if (partida == null || partida.isFinalizada()) return;
+        if (partida == null || partida.isFinalizada())
+            return;
 
         // 1. Campos completos
         List<Integer> numeros = leerFila(filaActual);
@@ -193,10 +215,10 @@ public class JuegoController {
         }
 
         // 4. Calcular resultado del intento y actualizar operador "=" / "≠"
-        int resultadoSecreto   = partida.getEcuacionSecreta().getResultado();
+        int resultadoSecreto = partida.getEcuacionSecreta().getResultado();
         int resultadoIngresado = (numeros.get(0) * numeros.get(1))
-                               +  numeros.get(2)
-                               -  numeros.get(3);
+                + numeros.get(2)
+                - numeros.get(3);
 
         if (resultadoIngresado != resultadoSecreto) {
             etiquetasIgual[filaActual].setText("≠");
@@ -220,7 +242,7 @@ public class JuegoController {
             detenerTemporizadorUI();
             mostrarAlerta("¡Ganaste!",
                     "Resolviste la ecuación en " + partida.getIntentos().size()
-                    + " intento(s) y " + partida.getTimer().obtenerTiempo() + " segundos.");
+                            + " intento(s) y " + partida.getTimer().obtenerTiempo() + " segundos.");
             return;
         }
 
@@ -230,7 +252,7 @@ public class JuegoController {
             detenerTemporizadorUI();
             mostrarAlerta("¡Perdiste!",
                     "La ecuación secreta era: "
-                    + partida.getEcuacionSecreta().getNumeros().toString());
+                            + partida.getEcuacionSecreta().getNumeros().toString());
             return;
         }
 
@@ -248,7 +270,8 @@ public class JuegoController {
         List<Integer> numeros = new ArrayList<>();
         for (int col = 0; col < 4; col++) {
             String texto = campos[fila][col].getText().trim();
-            if (texto.isEmpty()) return null;
+            if (texto.isEmpty())
+                return null;
             try {
                 numeros.add(Integer.parseInt(texto));
             } catch (NumberFormatException e) {
@@ -264,15 +287,16 @@ public class JuegoController {
             campo.getStyleClass().removeAll(
                     "celda-correcta", "celda-presente", "celda-ausente");
             switch (estados.get(col)) {
-                case VERDE    -> campo.getStyleClass().add("celda-correcta");
+                case VERDE -> campo.getStyleClass().add("celda-correcta");
                 case AMARILLO -> campo.getStyleClass().add("celda-presente");
-                case GRIS     -> campo.getStyleClass().add("celda-ausente");
+                case GRIS -> campo.getStyleClass().add("celda-ausente");
             }
         }
     }
 
     private void bloquearFilas(int desde, int hasta) {
-        for (int f = desde; f <= hasta; f++) bloquearFila(f);
+        for (int f = desde; f <= hasta; f++)
+            bloquearFila(f);
     }
 
     private void bloquearFila(int fila) {
@@ -298,11 +322,10 @@ public class JuegoController {
                 final int c = col;
 
                 campos[f][c].setTextFormatter(
-                    new javafx.scene.control.TextFormatter<>(change -> {
-                        String nuevo = change.getControlNewText();
-                        return nuevo.matches("\\d{0,2}") ? change : null;
-                    })
-                );
+                        new javafx.scene.control.TextFormatter<>(change -> {
+                            String nuevo = change.getControlNewText();
+                            return nuevo.matches("\\d{0,2}") ? change : null;
+                        }));
 
                 campos[f][c].textProperty().addListener((obs, anterior, actual) -> {
                     if (!actual.isEmpty() && c < 3) {
@@ -310,6 +333,29 @@ public class JuegoController {
                     }
                 });
             }
+        }
+    }
+
+    @FXML
+    private void abrirVentanaEcuacion() {
+
+        try {
+
+            FXMLLoader loader = new FXMLLoader(
+                    getClass().getResource("/com/ooodlegame/view/ecuacion.fxml"));
+
+            Parent root = loader.load();
+
+            Stage ventana = new Stage();
+
+            ventana.setTitle("Ingresar ecuación");
+
+            ventana.setScene(new Scene(root));
+
+            ventana.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 

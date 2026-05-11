@@ -184,6 +184,13 @@
 
               </Button>
 
+              <Button fx:id="botonIngresarEcuacion"
+                     text="Cree una ecuación"
+                     styleClass="boton-ecuacion"
+                     onAction="#abrirVentanaEcuacion"
+                     prefWidth="220"
+                     prefHeight="54" />
+
        </VBox>
 
 </StackPane>
