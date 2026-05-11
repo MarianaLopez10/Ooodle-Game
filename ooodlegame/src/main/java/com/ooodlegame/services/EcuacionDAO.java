@@ -26,6 +26,10 @@ public class EcuacionDAO {
         if (!ec.validarEcuacion()) {
             throw new Exception("La ecuación no es válida.");
         }
+        
+        if (existeEcuacion(ec)) {
+            throw new Exception("La ecuación ya existe.");
+        }
 
         String sql = """
                 INSERT INTO ecuacion
@@ -55,6 +59,50 @@ public class EcuacionDAO {
 
         } catch (SQLException e) {
             throw new Exception("Error al guardar ecuación.", e);
+        }
+    }
+
+    /**
+     * Verifica si una ecuación ya existe en la base de datos.
+     *
+     * @param ec ecuación a verificar
+     * @return true si ya existe, false en caso contrario
+     * @throws Exception si ocurre error en la consulta
+     */
+    public boolean existeEcuacion(Ecuacion ec) throws Exception {
+
+        String sql = """
+                SELECT COUNT(*)
+                FROM ecuacion
+                WHERE num1 = ?
+                AND num2 = ?
+                AND num3 = ?
+                AND num4 = ?
+                """;
+
+        try (
+            Connection conn = ConexionBD.getInstance().getConexion();
+            PreparedStatement ps = conn.prepareStatement(sql)
+        ) {
+
+            List<Integer> nums = ec.getNumeros();
+
+            ps.setInt(1, nums.get(0));
+            ps.setInt(2, nums.get(1));
+            ps.setInt(3, nums.get(2));
+            ps.setInt(4, nums.get(3));
+
+            try (ResultSet rs = ps.executeQuery()) {
+
+                if (rs.next()) {
+                    return rs.getInt(1) > 0;
+                }
+            }
+
+            return false;
+
+        } catch (SQLException e) {
+            throw new Exception("Error al verificar ecuación.", e);
         }
     }
 
