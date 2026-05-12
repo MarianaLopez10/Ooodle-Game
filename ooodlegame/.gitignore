@@ -1,15 +1,17 @@
-# Maven
+# Carpetas generadas automáticamente
 target/
+doc/
 
-# VS Code
-.vscode/
-
-# Logs
-*.log
-
-# Compilados
+# Archivos compilados de Java
 *.class
 
-# Sistema
+# Archivos temporales de VS Code
+.vscode/
+
+# Logs y archivos temporales
+*.log
+*.tmp
+
+# Configuración del sistema
 .DS_Store
 Thumbs.db
