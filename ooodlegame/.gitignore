@@ -1,0 +1,15 @@
+# Maven
+target/
+
+# VS Code
+.vscode/
+
+# Logs
+*.log
+
+# Compilados
+*.class
+
+# Sistema
+.DS_Store
+Thumbs.db
