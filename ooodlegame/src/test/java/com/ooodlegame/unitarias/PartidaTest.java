@@ -9,8 +9,29 @@ import com.ooodlegame.model.Ecuacion;
 import com.ooodlegame.model.Intento;
 import com.ooodlegame.model.Partida;
 
+/**
+ * Clase de prueba unitaria para la clase Partida.
+ *
+ * Verifica el correcto funcionamiento de la lógica
+ * principal relacionada con el desarrollo de una partida.
+ *
+ * Las pruebas incluyen:
+ * <ul>
+ *     <li>Registro de intentos</li>
+ *     <li>Verificación de victoria</li>
+ *     <li>Verificación de derrota</li>
+ *     <li>Finalización de la partida</li>
+ * </ul>
+ *
+ * Estas pruebas validan únicamente el comportamiento
+ * de la clase Partida de forma aislada.
+ */
 public class PartidaTest {
 
+    /**
+     * Verifica que un intento sea agregado correctamente
+     * a la lista de intentos de la partida.
+     */
     @Test
     void registrarIntento_debeAgregarIntento() {
 
@@ -23,6 +44,14 @@ public class PartidaTest {
         assertEquals(1, p.getIntentos().size());
     }
 
+    /**
+     * Verifica que verificarVictoria() retorne true
+     * cuando el intento coincide completamente
+     * con la ecuación secreta.
+     *
+     * @throws Exception si ocurre un error durante
+     *                   la comparación de la solución
+     */
     @Test
     void verificarVictoria_debeRetornarTrue() throws Exception {
 
@@ -39,6 +68,13 @@ public class PartidaTest {
         assertTrue(p.verificarVictoria());
     }
 
+    /**
+     * Verifica que verificarVictoria() retorne false
+     * cuando el intento no coincide con la solución.
+     *
+     * @throws Exception si ocurre un error durante
+     *                   la comparación de la solución
+     */
     @Test
     void verificarVictoria_debeRetornarFalse() throws Exception {
 
@@ -55,6 +91,14 @@ public class PartidaTest {
         assertFalse(p.verificarVictoria());
     }
 
+    /**
+     * Verifica que verificarDerrota() retorne true
+     * cuando se alcanzan los seis intentos permitidos
+     * sin acertar la solución.
+     *
+     * @throws Exception si ocurre un error durante
+     *                   la comparación de la solución
+     */
     @Test
     void verificarDerrota_debeRetornarTrue() throws Exception {
 
@@ -74,6 +118,11 @@ public class PartidaTest {
         assertTrue(p.verificarDerrota());
     }
 
+    /**
+     * Verifica que finalizarPartida() cambie
+     * correctamente el estado de la partida
+     * a finalizada.
+     */
     @Test
     void finalizarPartida_debeCambiarEstado() {
 
