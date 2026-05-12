@@ -16,11 +16,30 @@ El juego presenta una cuadrícula donde el usuario ubica números en posiciones 
 
 - Verde: El número está en la posición correcta.
 - Amarillo: El número está en la posición incorrecta.
-- Gris: El número no pertenece a la ecuación
+- Gris: El número no pertenece a la ecuación.
 
 ---
 
-## 3. Objetivo del Proyecto
+## 3. Reglas Del Juego
+
+El jugador deberá seguir las siguientes reglas para completar correctamente la ecuación:
+
+- Utilizar los números del 1 al 9 o del 1 al 12, dependiendo del modo de juego seleccionado.
+- Cada número puede utilizarse solo una vez dentro de la ecuación.
+- El jugador debe ingresar una ecuación válida que cumpla las reglas matemáticas establecidas.
+- Para comprobar la solución, el usuario debe presionar el botón “Validar Ecuación”.
+- El sistema mostrará retroalimentación visual mediante colores:
+  - Verde: El número está en la posición correcta.
+  - Amarillo: El número pertenece a la ecuación, pero está en una posición incorrecta.
+  - Gris: El número no pertenece a la ecuación.
+- El jugador dispone de un máximo de seis intentos para resolver la ecuación.
+- La partida finaliza automáticamente cuando:
+  - El jugador resuelve correctamente la ecuación.
+  - Se agotan los intentos disponibles.
+
+---
+
+## 4. Objetivo del Proyecto
 
 Desarrollar una aplicación que:
 
@@ -32,7 +51,7 @@ Desarrollar una aplicación que:
 
 ---
 
-## 4. Tecnologías Utilizadas
+## 5. Tecnologías Utilizadas
 
 - **Lenguaje de programación:** Java 17+
 - **Framework gráfico:** JavaFX
@@ -44,7 +63,7 @@ Desarrollar una aplicación que:
 
 ---
 
-## 5. Requisitos del Sistema
+## 6. Requisitos del Sistema
 
 Para ejecutar correctamente la aplicación se requiere:
 
@@ -56,7 +75,7 @@ Para ejecutar correctamente la aplicación se requiere:
 
 ---
 
-## 6. Funcionalidades Implementadas
+## 7. Funcionalidades Implementadas
 
 - Ingreso de ecuaciones por parte del usuario.
 - Registro de cada ecuación como un intento.
@@ -65,7 +84,7 @@ Para ejecutar correctamente la aplicación se requiere:
   - Orden correcto de operaciones.
   - Uso de números dentro del rango permitido.
   - Uso único de cada número.
-- Retroalimentación visual mediante colores. 
+- Retroalimentación visual mediante colores.
 - Detección y visualización de errores específicos.
 - Contador de intentos.
 - Visualización de temporizador.
@@ -75,17 +94,17 @@ Para ejecutar correctamente la aplicación se requiere:
 
 ---
 
-## 7. Arquitectura del Sistema (MVC)
+## 8. Arquitectura del Sistema (MVC)
 
 El proyecto está desarrollado bajo el patrón de arquitectura MVC (Modelo - Vista - Controlador), lo que permite una mejor organización del código y facilita su mantenimiento.
 
-- Modelo (Model): Maneja la lógica del juego, validaciones, reglas matemáticas y acceso a la base de datos. 
-- Vista (view): Representa la interfaz gráfica del usuario desarrollada en JavaFX, incluyendo la cuadrícula, botones, colores y elementos visuales. 
+- Modelo (Model): Maneja la lógica del juego, validaciones, reglas matemáticas y acceso a la base de datos.
+- Vista (View): Representa la interfaz gráfica del usuario desarrollada en JavaFX, incluyendo la cuadrícula, botones, colores y elementos visuales.
 - Controlador (Controller): Gestiona la interacción del usuario, procesa los intentos y comunica la vista con el modelo.
 
 ---
 
-## 8. Desarrolladores
+## 9. Desarrolladores
 
 - Mariana López Tovar
 - Alexis Santiago Puentes Bohorquez
