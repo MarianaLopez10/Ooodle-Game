@@ -1,9 +1,6 @@
 package com.ooodlegame.controller;
 
-import com.ooodlegame.model.Ecuacion;
-import com.ooodlegame.model.EstadoCelda;
-import com.ooodlegame.model.Intento;
-import com.ooodlegame.model.Partida;
+import com.ooodlegame.model.*;
 import com.ooodlegame.services.EcuacionDAO;
 
 import javafx.animation.KeyFrame;
@@ -22,30 +19,42 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Controlador de la pantalla de juego de Ooodle.
  *
- * Gestiona la cuadrícula de intentos, la validación de ecuaciones,
- * la retroalimentación visual por colores y el estado de la partida.
+ * Esta clase se encarga de gestionar toda la lógica de interacción
+ * entre la interfaz gráfica y el modelo de la partida.
  *
- * Cada fila: num1 × num2 + num3 - num4 = resultado
- * Si el resultado ingresado ≠ resultado secreto, el "=" se cambia a "≠".
+ * Sus principales funciones son:
+ * <ul>
+ * <li>Inicializar la cuadrícula del juego</li>
+ * <li>Gestionar los intentos del jugador</li>
+ * <li>Validar ecuaciones ingresadas</li>
+ * <li>Mostrar retroalimentación visual mediante colores</li>
+ * <li>Controlar el temporizador de la partida</li>
+ * <li>Administrar las condiciones de victoria y derrota</li>
+ * <li>Gestionar la navegación entre ventanas</li>
+ * </ul>
+ *
+ * Cada fila representa una ecuación matemática de la forma:
+ *
+ * num1 × num2 + num3 - num4 = resultado
+ *
+ * Si el resultado ingresado no coincide con el resultado secreto,
+ * el operador "=" cambia visualmente a "≠".
  */
 public class JuegoController {
-
-    // ── Referencias FXML ──────────────────────────────────────────────────────
 
     @FXML
     private GridPane panelCuadricula;
     @FXML
     private Button botonVolver;
 
-    // Campos de entrada
+    /**
+     * Campos de entrada
+     */
     @FXML
     private TextField r0c0, r0c1, r0c2, r0c3;
     @FXML
@@ -59,7 +68,9 @@ public class JuegoController {
     @FXML
     private TextField r5c0, r5c1, r5c2, r5c3;
 
-    // Etiquetas de resultado (la celda roja con el número)
+    /**
+     * Etiquetas de resultado
+     */
     @FXML
     private Label r0resultado;
     @FXML
@@ -73,7 +84,9 @@ public class JuegoController {
     @FXML
     private Label r5resultado;
 
-    // Etiquetas del operador "=" de cada fila (fx:id="r0igual" … "r5igual")
+    /**
+     * Etiquetas del operador "=" de cada fila (fx:id="r0igual" … "r5igual")
+     */
     @FXML
     private Label r0igual;
     @FXML
@@ -87,8 +100,6 @@ public class JuegoController {
     @FXML
     private Label r5igual;
 
-    // ── Estado interno ────────────────────────────────────────────────────────
-
     private Partida partida;
     private int filaActual = 0;
     private Timeline timeline;
@@ -97,8 +108,13 @@ public class JuegoController {
     private Label[] etiquetasResultado;
     private Label[] etiquetasIgual;
 
-    // ── Inicialización ────────────────────────────────────────────────────────
-
+    /**
+     * Inicializa los componentes de la interfaz gráfica.
+     *
+     * Configura la matriz de campos de texto, etiquetas de resultado,
+     * listeners de teclado y bloquea las filas del tablero antes
+     * de iniciar la partida.
+     */
     @FXML
     public void initialize() {
 
@@ -137,9 +153,14 @@ public class JuegoController {
     }
 
     /**
-     * Inicia una nueva partida. Lo llama InicioController tras cargar la escena.
+     * Inicia una nueva partida del juego.
      *
-     * @param rango valor máximo permitido (9 o 12)
+     * Obtiene una ecuación aleatoria desde la base de datos
+     * según el rango seleccionado y prepara la interfaz
+     * para comenzar los intentos.
+     *
+     * @param rango valor máximo permitido para los números
+     *              de la ecuación (por ejemplo 9 o 12)
      */
     public void iniciarPartida(int rango) {
         partida = new Partida();
@@ -163,8 +184,13 @@ public class JuegoController {
         iniciarTemporizadorUI();
     }
 
-    // ── Temporizador ──────────────────────────────────────────────────────────
-
+    /**
+     * Inicia el temporizador visual de la partida.
+     *
+     * Ejecuta un Timeline que incrementa el contador
+     * de tiempo cada segundo mientras la partida
+     * no haya finalizado.
+     */
     private void iniciarTemporizadorUI() {
         partida.getTimer().iniciar();
         timeline = new Timeline(new KeyFrame(Duration.seconds(1), e -> {
@@ -176,13 +202,31 @@ public class JuegoController {
         timeline.play();
     }
 
+    /**
+     * Detiene el temporizador visual de la partida.
+     *
+     * Finaliza la ejecución del Timeline encargado
+     * de actualizar el contador de tiempo del juego.
+     */
     private void detenerTemporizadorUI() {
         if (timeline != null)
             timeline.stop();
     }
 
-    // ── Validación principal ──────────────────────────────────────────────────
-
+    /**
+     * Valida la ecuación ingresada por el jugador.
+     *
+     * Verifica:
+     * <ul>
+     * <li>Que todos los campos estén completos</li>
+     * <li>Que los números estén dentro del rango permitido</li>
+     * <li>Que no existan números repetidos</li>
+     * <li>Que el resultado matemático sea correcto</li>
+     * </ul>
+     *
+     * Posteriormente registra el intento, pinta los colores
+     * correspondientes y verifica si el jugador ganó o perdió.
+     */
     @FXML
     private void validarEcuacion() {
         if (partida == null || partida.isFinalizada())
@@ -264,8 +308,13 @@ public class JuegoController {
         etiquetasResultado[filaActual].getStyleClass().add("celda-resultado-visible");
     }
 
-    // ── Helpers ───────────────────────────────────────────────────────────────
-
+    /**
+     * Lee los números ingresados en una fila específica.
+     *
+     * @param fila índice de la fila a leer
+     * @return lista de números ingresados o null
+     *         si existen campos vacíos o inválidos
+     */
     private List<Integer> leerFila(int fila) {
         List<Integer> numeros = new ArrayList<>();
         for (int col = 0; col < 4; col++) {
@@ -281,6 +330,16 @@ public class JuegoController {
         return numeros;
     }
 
+    /**
+     * Aplica los colores de retroalimentación a una fila.
+     *
+     * Dependiendo del estado de cada celda se asigna
+     * una clase CSS correspondiente.
+     *
+     * @param fila    fila que será coloreada
+     * @param estados lista de estados obtenidos
+     *                tras comparar el intento
+     */
     private void pintarFila(int fila, List<EstadoCelda> estados) {
         for (int col = 0; col < 4; col++) {
             TextField campo = campos[fila][col];
@@ -294,11 +353,28 @@ public class JuegoController {
         }
     }
 
+    /**
+     * Bloquea un conjunto de filas del tablero.
+     *
+     * Deshabilita la edición y navegación de todas
+     * las celdas comprendidas entre las filas indicadas.
+     *
+     * @param desde fila inicial a bloquear
+     * @param hasta fila final a bloquear
+     */
     private void bloquearFilas(int desde, int hasta) {
         for (int f = desde; f <= hasta; f++)
             bloquearFila(f);
     }
 
+    /**
+     * Bloquea una fila específica del tablero.
+     *
+     * Los campos de texto dejan de ser editables
+     * y no pueden recibir foco del teclado.
+     *
+     * @param fila índice de la fila a bloquear
+     */
     private void bloquearFila(int fila) {
         for (TextField campo : campos[fila]) {
             campo.setEditable(false);
@@ -306,6 +382,15 @@ public class JuegoController {
         }
     }
 
+    /**
+     * Activa una fila específica del tablero.
+     *
+     * Habilita la edición de los campos de texto,
+     * permite el enfoque mediante teclado y aplica
+     * el estilo visual de fila activa.
+     *
+     * @param fila índice de la fila a activar
+     */
     private void activarFila(int fila) {
         for (TextField campo : campos[fila]) {
             campo.setEditable(true);
@@ -315,6 +400,13 @@ public class JuegoController {
         campos[fila][0].requestFocus();
     }
 
+    /**
+     * Configura los listeners y validaciones de teclado.
+     *
+     * Limita la entrada de cada campo a máximo dos dígitos
+     * numéricos y mueve automáticamente el foco al siguiente
+     * campo cuando el usuario ingresa un valor.
+     */
     private void configurarListenersTeclado() {
         for (int fila = 0; fila < 6; fila++) {
             for (int col = 0; col < 4; col++) {
@@ -335,6 +427,13 @@ public class JuegoController {
             }
         }
     }
+
+    /**
+     * Abre la ventana para ingresar nuevas ecuaciones.
+     *
+     * Carga la vista ecuacion.fxml y crea una nueva ventana
+     * independiente para el registro de ecuaciones.
+     */
 
     @FXML
     private void abrirVentanaEcuacion() {
@@ -359,8 +458,12 @@ public class JuegoController {
         }
     }
 
-    // ── Navegación ────────────────────────────────────────────────────────────
-
+    /**
+     * Regresa a la pantalla de inicio.
+     *
+     * Detiene el temporizador de la partida actual
+     * y carga nuevamente la ventana principal.
+     */
     @FXML
     private void volver() {
         detenerTemporizadorUI();
@@ -376,8 +479,12 @@ public class JuegoController {
         }
     }
 
-    // ── Utilidades ────────────────────────────────────────────────────────────
-
+    /**
+     * Muestra una ventana de alerta informativa.
+     *
+     * @param titulo  título de la alerta
+     * @param mensaje mensaje mostrado al usuario
+     */
     private void mostrarAlerta(String titulo, String mensaje) {
         Alert alerta = new Alert(AlertType.INFORMATION);
         alerta.setTitle(titulo);

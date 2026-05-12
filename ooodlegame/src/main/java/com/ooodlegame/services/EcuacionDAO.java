@@ -9,13 +9,28 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Clase DAO encargada de gestionar las operaciones relacionadas
+ * con las ecuaciones en la base de datos.
+ * 
+ * Permite guardar, verificar y obtener ecuaciones
+ * almacenadas en la tabla "ecuacion".
+ */
 public class EcuacionDAO {
 
     /**
      * Guarda una ecuación válida en la base de datos.
      *
+     * Verifica que la ecuación:
+     * <ul>
+     *     <li>No sea nula</li>
+     *     <li>Sea válida</li>
+     *     <li>No exista previamente</li>
+     * </ul>
+     *
      * @param ec ecuación a guardar
-     * @throws Exception si la ecuación es nula, inválida o falla la inserción
+     * @throws Exception si la ecuación es nula, inválida,
+     *                   ya existe o falla la inserción
      */
     public void guardarEcuacion(Ecuacion ec) throws Exception {
 
@@ -65,9 +80,13 @@ public class EcuacionDAO {
     /**
      * Verifica si una ecuación ya existe en la base de datos.
      *
+     * La comparación se realiza utilizando los cuatro números
+     * que componen la ecuación.
+     *
      * @param ec ecuación a verificar
-     * @return true si ya existe, false en caso contrario
-     * @throws Exception si ocurre error en la consulta
+     * @return true si la ecuación ya existe;
+     *         false en caso contrario
+     * @throws Exception si ocurre un error durante la consulta
      */
     public boolean existeEcuacion(Ecuacion ec) throws Exception {
 
@@ -107,11 +126,15 @@ public class EcuacionDAO {
     }
 
     /**
-     * Obtiene una ecuación aleatoria según el rango.
+     * Obtiene una ecuación aleatoria según el rango indicado.
+     *
+     * La ecuación se selecciona aleatoriamente entre las
+     * ecuaciones almacenadas con el rango especificado.
      *
      * @param rango rango solicitado
-     * @return ecuación encontrada
-     * @throws Exception si ocurre error o no hay ecuaciones disponibles
+     * @return objeto Ecuacion encontrado en la base de datos
+     * @throws Exception si no existen ecuaciones disponibles
+     *                   o ocurre un error en la consulta
      */
     public Ecuacion obtenerEcuacionAleatoria(int rango) throws Exception {
 
