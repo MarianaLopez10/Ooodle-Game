@@ -49,7 +49,7 @@
                 text="Utilice los números del 1 al 9 o del 1 al 12 (use cada dígito solo una vez)."
                 styleClass="texto-reglas" />
 
-            <Label text="Haga clic en el botón rojo 'Validar ecuación' para comprobar la solución."
+            <Label text="Haga clic en el botón verde 'Validar ecuación' para comprobar la solución."
                 styleClass="texto-reglas" />
 
             <Label text="Verde = ¡El número está en la posición correcta!"
@@ -65,7 +65,7 @@
                 styleClass="texto-reglas" />
 
             <Label
-                text="Puede crear una ecuación usted mismo dando clic al botón azul 'Cree una ecuación'."
+                text="Puede crear una ecuación usted mismo dando clic al botón morado 'Crar una ecuación'."
                 styleClass="texto-reglas" />
 
         </VBox>

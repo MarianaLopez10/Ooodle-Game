@@ -185,7 +185,7 @@
               </Button>
 
               <Button fx:id="botonIngresarEcuacion"
-                     text="Cree una ecuación"
+                     text="Crear una ecuación"
                      styleClass="boton-ecuacion"
                      onAction="#abrirVentanaEcuacion"
                      prefWidth="220"
