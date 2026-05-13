@@ -65,7 +65,7 @@
                 styleClass="texto-reglas" />
 
             <Label
-                text="Puede crear una ecuación usted mismo dando clic al botón morado 'Crar una ecuación'."
+                text="Puede crear una ecuación usted mismo dando clic al botón morado 'Crear una ecuación'."
                 styleClass="texto-reglas" />
 
         </VBox>
