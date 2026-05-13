@@ -13,7 +13,7 @@
            xmlns:fx="http://javafx.com/fxml/1"
            fx:controller="com.ooodlegame.controller.EcuacionController"
            prefWidth="700"
-           prefHeight="500"
+           prefHeight="600"
            stylesheets="@style.css">
 
     <!-- Fondo -->

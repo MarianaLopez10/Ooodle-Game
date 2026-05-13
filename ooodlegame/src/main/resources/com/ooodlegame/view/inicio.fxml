@@ -37,13 +37,16 @@
         <!-- Reglas del juego -->
         <VBox alignment="CENTER"
             spacing="8"
-            fillWidth="false"
+            prefWidth="700"
+            minWidth="700"
+            maxWidth="700"
             styleClass="panel-reglas">
 
             <Label text="¿Cómo jugar?"
                 styleClass="titulo-reglas" />
 
-            <Label text="Utilice los números del 1 al 9 o del 1 al 12 (use cada dígito solo una vez)."
+            <Label
+                text="Utilice los números del 1 al 9 o del 1 al 12 (use cada dígito solo una vez)."
                 styleClass="texto-reglas" />
 
             <Label text="Haga clic en el botón rojo 'Validar ecuación' para comprobar la solución."
@@ -61,12 +64,12 @@
             <Label text="Tiene un máximo de seis intentos."
                 styleClass="texto-reglas" />
 
-             <Label text="Puede crear una ecuación usted mismo dando clic al botón azul 'Cree una ecuación'."
+            <Label
+                text="Puede crear una ecuación usted mismo dando clic al botón azul 'Cree una ecuación'."
                 styleClass="texto-reglas" />
 
         </VBox>
 
-        
 
         <!-- Botones de rango -->
         <HBox alignment="CENTER" spacing="16">

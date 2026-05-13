@@ -22,12 +22,11 @@
 
 /* ───────── Panel de Reglas ───────── */
 .panel-reglas {
-    -fx-background-color: #e4cdff;
+    -fx-background-color: #f2e6ff;
     -fx-background-radius: 24;
     -fx-border-radius: 24;
-    -fx-border-color: #d6b2ff;
+    -fx-border-color: #ebd9ff;
     -fx-border-width: 2;
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.12), 14, 0, 0, 4);
 }
 
 .titulo-reglas {
@@ -58,7 +57,6 @@
     -fx-border-color: #d8dbe8;
     -fx-border-width: 1.5px;
     -fx-cursor: hand;
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 8, 0, 0, 2);
 }
 
 .boton-rango:hover{
@@ -69,11 +67,13 @@
     -fx-background-color: #3b6fe8;
     -fx-text-fill: white;
     -fx-border-color: #3b6fe8;
-    -fx-effect: dropshadow(gaussian, rgba(59,111,232,0.35), 12, 0, 0, 4);
+    -fx-effect: dropshadow(gaussian, rgba(59, 85, 232, 0.35), 12, 0, 0, 4);
 }
 
 .boton-rango-seleccionado:hover{
-    -fx-background-color: #2f61db;
+    -fx-background-color: #335bb8;
+    -fx-border-color: #335bb8;
+    -fx-text-fill: #2f4a8a;
 }
 
 /* Botón iniciar */
@@ -112,13 +112,14 @@
     -fx-padding: 8px 18px;
     -fx-cursor: hand;
     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 6, 0, 0, 2);
-    -fx-background-color: #787b81;
+    -fx-background-color: #909399;
     -fx-text-fill: white;
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.35), 12, 0, 0, 4);
 }
 
 .boton-volver:hover{
-     -fx-background-color: #525458;
+    -fx-background-color: #75777c;
+    -fx-text-fill: #252627;
 }
 
 /* Campos de entrada */
@@ -190,14 +191,13 @@
     -fx-background-color: #f28b8b;
     -fx-text-fill: #8b1a1a;
     -fx-border-color: #e07070;
-     -fx-pref-width: 68px;
+    -fx-pref-width: 68px;
     -fx-pref-height: 68px;
     -fx-background-radius: 12px;
     -fx-border-radius: 12px;
     -fx-border-width: 1.5px;
     -fx-font-size: 20px;
     -fx-font-weight: bold;
-    -fx-text-fill: #ffffff;
     -fx-alignment: center;
     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.06), 4, 0, 0, 1);
 }
@@ -223,23 +223,23 @@
 
 /* Botón validar */
 .boton-validar{
-    -fx-background-color: #f28b8b;
-    -fx-text-fill: #5a1010;
+    -fx-background-color: #2ecc71;
+    -fx-text-fill: white;
     -fx-font-size: 17px;
     -fx-font-weight: bold;
     -fx-background-radius: 14px;
     -fx-cursor: hand;
-    -fx-effect: dropshadow(gaussian, rgba(242,139,139,0.40), 12, 0, 0, 4);
+    -fx-effect: dropshadow(gaussian, rgba(113, 241, 101, 0.4), 12, 0, 0, 4);
 }
 
 .boton-validar:hover{
-    -fx-background-color: #e07070;
-    -fx-text-fill: white;
+    -fx-background-color: #28b765;
+    -fx-text-fill: #136335;;
 }
 
 /* Botón validar */
 .boton-ecuacion{
-    -fx-background-color: #3b6fe8;
+    -fx-background-color: #813ead;
     -fx-text-fill: white;
     -fx-font-size: 17px;
     -fx-font-weight: bold;
@@ -249,6 +249,6 @@
 }
 
 .boton-ecuacion:hover{
-    -fx-background-color: #2f61db;
-    -fx-text-fill: #18347a;
+    -fx-background-color: #6e2a9b;
+    -fx-text-fill: #522470;
 }
